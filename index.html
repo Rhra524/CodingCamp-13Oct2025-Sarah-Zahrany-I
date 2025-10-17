@@ -3,10 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>To-Do LIst - Sarah Zahrany</title>
+
+     <!-- CSS External File -->
+     <link rel="stylesheet" href="CSS\style.CSS">
+
 </head>
+<!-- Body section -->
 <body>
-    <h1>Hello, World</h1>
-    <p>This is a Simpe HTML</p>
+
+<!-- Header Section -->
+    <header>
+        <h1>My To-Do List</h1>
+    </header>
+
+    <main>
+        <section class="To-Do-app">
+            <input type="text" class="border rounded p-2" id="todo-input" placeholder="Add a New Task..." />    
+            <input type="data" class="border rounded p-2" id="todo-input" placeholder="Select due date..." />
+            <button id="add-btn">Add</button> 
+            <ul id="To-Do-List"></ul>
+        </section>
+
+        <!-- Action Buttons Section -->
+         <section>
+            <button id="delete-completed-btn">Deleted Completed Tasks</button>
+            <button id="Clear-all-btn">Clear All Tasks</button>
+         </section>
+
+         <section>
+            <h2>List of Tasks</h2>
+            <ul id="task-list">
+                <li>No tasks added yet</li>
+            </ul>
+         </section>
+    </main>
+ 
+<!-- Footer Section -->
+    <footer>
+        <p>&copy;2025 Sarah To-Do List App</p>
+    </footer>
+
+<!-- Javascript External File -->
+     <script src="js\script.js"></script>
+
 </body>
 </html>
