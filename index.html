@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do LIst - Sarah Zahrany</title>
+    <title>To-Do List - Sarah Zahrany</title>
 
-     <!-- CSS External File -->
-     <link rel="stylesheet" href="CSS\style.CSS">
+    <!-- External CSS File -->
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <!-- Tailwind CSS CDN -->
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
 
 </head>
 <!-- Body section -->
@@ -14,38 +18,81 @@
 
 <!-- Header Section -->
     <header>
-        <h1>My To-Do List</h1>
+        <h1 class="text-3xl font-bold">My To-Do List</h1>
     </header>
 
+   
+    <!-- Main Section -->
     <main>
-        <section class="To-Do-app">
-            <input type="text" class="border rounded p-2" id="todo-input" placeholder="Add a New Task..." />    
-            <input type="data" class="border rounded p-2" id="todo-input" placeholder="Select due date..." />
-            <button id="add-btn">Add</button> 
-            <ul id="To-Do-List"></ul>
+        <section class="to-do-app my-4">
+            <input type="text" class="border rounded p-2 bg-white" id="to-do-input" placeholder="Add a New Task..." />    
+            <input type="date" class="border rounded p-2 bg-white" id="due-date-input" placeholder="Select due date..." />
+            <button class="border rounded bg-blue-500 text-white p-2" onclick="addTask();">Add</button>
         </section>
+    
+        <div class="mapify-window"></div>
 
         <!-- Action Buttons Section -->
-         <section>
-            <button id="delete-completed-btn">Deleted Completed Tasks</button>
-            <button id="Clear-all-btn">Clear All Tasks</button>
-         </section>
+        <section class="flex justify-between my-4">
+            <!-- Filter Dropdown -->
+            <div class="relative inline-block">
+                <label tabindex="0" >
+                <button id="filter-btn" class="border rounded bg-gray-400 p-2" onclick="filterTasks();">
+                    <i class="bx bx-filter my-4 mr-2 px-5 py-2"></i> Filter
+                </button>
+                </label>
+            
+                <div id="filter-menu" class="absolute left-0 mt-2 bg-white border rounded shadow-lg dropdown">
+                    <ul class="py-2 text-sm text-gray-700">
+                            <li>
+                                <button class="w-full text-left px-4 py-2 hover:bg-gray-100" onclick="setFilter ('all');">All Tasks</button>
+                            </li>
+                            <li>
+                                <button class="w-full text-left px-4 py-2 hover:bg-gray-100" onclick="setFilter('completed');">Completed</button>
+                            </li>
+                            <li>
+                                <button class="w-full text-left px-4 py-2 hover:bg-gray-100" onclick="setFilter('pending');">Pending</button>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+            <button class="border rounded bg-red-500 text-white p-2" onclick="deleteAllTasks();">Delete All Tasks</button>
+        </section>
 
          <section>
-            <h2>List of Tasks</h2>
-            <ul id="task-list">
-                <li>No tasks added yet</li>
-            </ul>
+            <table class=" my-4 w-full border-collapse border border-gray-500 text-center" id="task-table" border="1" style="width: 100%;"> 
+                <thead class="bg-sky-300">
+                    <tr class="my-4 w-full border-collapse bg-blue-400 text-white">
+                        <th class="w-2/5">Task</th>
+                        <th class="w-1/5">Due Date</th>
+                        <th class="w-1/5">Status</th>
+                        <th class="w-1/5">Actions</th>
+                    </tr>
+                    </thead>
+                <tbody id="task-table-body">
+                    <tr>
+                        <td colspan="4" class="text-center py-10 border border-gray-500 bg-sky-50;">
+                        <ul id="task-list">
+                            <!-- Task Will be dynamically added here -->
+                             <li style="text-align: center;">
+                                "No Tasks Added Yet"
+                             </li>
+                        </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
          </section>
     </main>
  
 <!-- Footer Section -->
     <footer>
-        <p>&copy;2025 Sarah To-Do List App</p>
+        <p class="txt-sm">&copy;2025 Sarah To-Do List App</p>
     </footer>
 
 <!-- Javascript External File -->
-     <script src="js\script.js"></script>
+     <script src="js/script.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,25 @@
+body {
+    height: 100vh;
+    justify-items: center;
+    align-content: center;
+    background-color: lightblue;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+ul li ul.dropdown {
+    display: block;
+}
+
+ul li ul.dropdown {
+position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    list-style-type: none;
+    padding: 10px;
+    z-index: 1000;
+}
