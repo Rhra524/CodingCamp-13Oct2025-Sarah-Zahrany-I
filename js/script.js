@@ -32,10 +32,9 @@ function renderTasks() {
 
     /// Render each task
     tasksDb.forEach((taskObj, index) => {
-        taskList.innerHTML += `<li>${taskObj.task} - ${taskObj.dueDate} - ${taskObj.status || 'pending' ||  'Completed' || 'In-progress'} - ${taskObj.actions || ''}</li>`;
+        taskList.innerHTML += `<li>${taskObj.task} - ${taskObj.dueDate} - ${taskObj.status || 'pending' ||  'Completed' || 'In-progress'}</li>`;
     });
-
-    }
+}
 
 /// Filter Functionality
 
@@ -53,11 +52,14 @@ document.addEventListener('click', function(event) {
         menu.classList.add('hidden');
     }
 });
+renderTasks();
 
 // --- set filter & render tasks ---
 function setFilter (status) {
     document.getElementById('filter-menu').classList.add('hidden');
     filterTasks(status);
+
+    taskList.innerHTML += `<li>${taskObj.task} - ${taskObj.dueDate} - ${taskObj.status || 'pending' ||  'Completed' || 'In-progress'} <button onclick="deleteTask(${index})">Delete</button></li>`;
 }
 
 // --- update filterTasks function ---
@@ -74,24 +76,23 @@ function filterTasks(status = 'all') {
     if (filteredTasks.length === 0) {
         tbody.innerHTML = `
         <tr>
-            <td colspan="4" class="text-center py-10 border border-gray-500 bg-sky-50;">No tasks found for "${status}" Filter
-            </td>
+            <td colspan="4" class="text-center border border-gray-500 bg-sky-50;">No tasks found for "${status}" Filter</td>
         </tr>`;
         return;
+
     }
+
+function setFilter (status) {
+    document.getElementById('filter-menu').classList.add('hidden');
+    filterTasks(status);
+}
 
 filteredTasks.forEach((taskObj, index) => {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td class="border border-gray-500">${taskObj.task}</td>
             <td class="border border-gray-500">${taskObj.dueDate}</td>
-            <td class="border border-gray-500">${taskObj.status}</td>
-            <td class="border border-gray-500">
-                <button class="bg-green-500 text-white px-3 py-1 rounded" onclick="updateStatus(${index}, 'completed');">Completed</button>
-                <button class="bg-yellow-500 text-white px-3 py-1 rounded" onclick="deleteTask(${index});">Delete</button>
-                <button class="bg-blue-500 text-white px-3 py-1 rounded" onclick="updateStatus(${index}, 'in-progress');">In Progress</button>
-            </td>
-        `;
+            <td class="border border-gray-500">${taskObj.status}</td>`;
         tbody.appendChild(row);
     });
 

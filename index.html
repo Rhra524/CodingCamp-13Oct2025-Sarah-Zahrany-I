@@ -29,29 +29,28 @@
             <input type="date" class="border rounded p-2 bg-white" id="due-date-input" placeholder="Select due date..." />
             <button class="border rounded bg-blue-500 text-white p-2" onclick="addTask();">Add</button>
         </section>
-    
-        <div class="mapify-window"></div>
+
 
         <!-- Action Buttons Section -->
         <section class="flex justify-between my-4">
             <!-- Filter Dropdown -->
-            <div class="relative inline-block">
+            <div id="filter-btn" class="relative inline-block">
                 <label tabindex="0" >
                 <button id="filter-btn" class="border rounded bg-gray-400 p-2" onclick="filterTasks();">
                     <i class="bx bx-filter my-4 mr-2 px-5 py-2"></i> Filter
                 </button>
                 </label>
-            
-                <div id="filter-menu" class="absolute left-0 mt-2 bg-white border rounded shadow-lg dropdown">
-                    <ul class="py-2 text-sm text-gray-700">
+
+                <div id="filter-menu" class="Dropdown absolute left-0 mt-2 bg-white border rounded shadow-lg hidden z-10">
+                    <ul class="py-2 text-sm text-gray-700" style="width: max-content;">
                             <li>
-                                <button class="w-full text-left px-4 py-2 hover:bg-gray-100" onclick="setFilter ('all');">All Tasks</button>
+                                <button class="w-full text-left px-4 py-2 hover:bg-gray-100 dropdown-content" onclick="setFilter ('completed');">completed</button>
                             </li>
                             <li>
-                                <button class="w-full text-left px-4 py-2 hover:bg-gray-100" onclick="setFilter('completed');">Completed</button>
+                                <button class="w-full text-left px-4 py-2 hover:bg-gray-100 dropdown-content" onclick="setFilter('in-progress');">In-progress</button>
                             </li>
                             <li>
-                                <button class="w-full text-left px-4 py-2 hover:bg-gray-100" onclick="setFilter('pending');">Pending</button>
+                                <button class="w-full text-left px-4 py-2 hover:bg-gray-100 dropdown-content" onclick="setFilter('pending');">Pending</button>
                             </li>
                     </ul>
                 </div>
@@ -60,7 +59,7 @@
         </section>
 
          <section>
-            <table class=" my-4 w-full border-collapse border border-gray-500 text-center" id="task-table" border="1" style="width: 100%;"> 
+            <table  id="task-table" class=" my-4 w-full border-collapse border border-gray-500 text-center" style="width: 100%;"> 
                 <thead class="bg-sky-300">
                     <tr class="my-4 w-full border-collapse bg-blue-400 text-white">
                         <th class="w-2/5">Task</th>
@@ -72,11 +71,11 @@
                 <tbody id="task-table-body">
                     <tr>
                         <td colspan="4" class="text-center py-10 border border-gray-500 bg-sky-50;">
-                        <ul id="task-list">
-                            <!-- Task Will be dynamically added here -->
-                             <li style="text-align: center;">
-                                "No Tasks Added Yet"
-                             </li>
+                            <ul id="task-list">
+                                <!-- Task Will be dynamically added here -->
+                                <li style="text-align: center;">
+                                No Tasks Added Yet
+                                </li>
                         </ul>
                         </td>
                     </tr>

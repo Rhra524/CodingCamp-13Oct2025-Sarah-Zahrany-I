@@ -3,6 +3,12 @@ body {
     justify-items: center;
     align-content: center;
     background-color: lightblue;
+    
+}
+
+main {
+    display: table;
+    
 }
 
 .container {
@@ -13,6 +19,7 @@ body {
 
 ul li ul.dropdown {
     display: block;
+    
 }
 
 ul li ul.dropdown {
